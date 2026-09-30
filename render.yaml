@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: kimibot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/status
+    envVars:
+      - key: PROVIDER
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: RATE_LIMIT_MAX
+        value: "30"
+      # - key: BASE_URL            # WAJIB untuk Google OAuth
+      #   value: https://kimibot-xxxx.onrender.com
+      # - key: GOOGLE_CLIENT_ID    # isi manual di dashboard
+      #   sync: false
+      # - key: GOOGLE_CLIENT_SECRET
+      #   sync: false
